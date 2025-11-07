@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Yangzoom Pun Magar — Senior Backend Engineer</title>
+  <style>
+    :root { --blue:#0b5cab; --ink:#1f2937; --muted:#6b7280; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans'; color: var(--ink); }
+    header { padding: 36px 20px; text-align:center; border-bottom:1px solid #e5e7eb; }
+    h1 { margin:0; font-size: 28px; color: var(--blue); }
+    h2 { color: var(--blue); margin: 28px 0 12px; font-size: 18px; }
+    h3 { margin: 18px 0 8px; }
+    .sub { color: var(--muted); margin-top:6px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 18px 20px 42px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap: 20px; }
+    @media(min-width: 980px){ .grid { grid-template-columns: 320px 1fr; } }
+    .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
+    ul { margin: 8px 0 0 20px; }
+    li { margin: 6px 0; }
+    a.btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--blue); color:var(--blue); text-decoration:none; margin-right:8px; }
+    a.btn.primary { background: var(--blue); color:#fff; }
+    .stack dt { font-weight:600; margin-top:8px; }
+    .stack dd { margin:0 0 4px 0; color:var(--muted); }
+    footer { text-align:center; color: var(--muted); padding: 24px 16px; border-top:1px solid #e5e7eb; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Yangzoom Pun Magar</h1>
+    <div class="sub">Senior Backend Engineer · FinTech</div>
+    <div style="margin-top:10px;">
+      <a class="btn primary" href="./assets/Yangzoom_Pun_Magar_Resume.pdf">Download PDF</a>
+      <a class="btn" href="./assets/Yangzoom_Pun_Magar_Resume.docx">Download Word</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section class="card">
+        <h2>Technical Skills</h2>
+        <dl class="stack">
+          <dt>Languages</dt><dd>Java (8/17), Python</dd>
+          <dt>Frameworks</dt><dd>Spring Boot, Spring Security (OAuth2), Spring Data JPA, Hibernate</dd>
+          <dt>Messaging</dt><dd>Kafka</dd>
+          <dt>Databases</dt><dd>PostgreSQL, Oracle, MySQL, MongoDB</dd>
+          <dt>Cloud & DevOps</dt><dd>AWS (ECS, S3, CloudWatch, IAM), Docker, Jenkins, OpenShift</dd>
+          <dt>Testing</dt><dd>JUnit, Mockito, Cucumber, ATDD</dd>
+          <dt>Build & SCM</dt><dd>Maven, Gradle, Git, GitHub</dd>
+          <dt>Observability</dt><dd>Splunk, CloudWatch, Grafana, Prometheus, Whitesource</dd>
+        </dl>
+        <h2>Contact</h2>
+        <p><strong>Email</strong>: your.email@example.com<br/>
+           <strong>LinkedIn</strong>: linkedin.com/in/your-handle<br/>
+           <strong>GitHub</strong>: github.com/your-username</p>
+      </section>
+
+      <section class="card">
+        <h2>Professional Summary</h2>
+        <p>Senior Backend Engineer with 6+ years of experience designing and maintaining Spring Boot–based microservices and event-driven systems in cloud-native environments. Specialized in Kafka, AWS ECS, and CI/CD automation using Jenkins. Experienced in large-scale migrations, security remediation, and acceptance test–driven development (ATDD). Strong collaboration and mentoring skills with a track record of improving system reliability and reducing deployment failure rates in FinTech ecosystems.</p>
+
+        <h2>Professional Experience</h2>
+
+        <h3>Software Engineer → Senior Backend Engineer — Company Name — Jan 2018 – Nov 2025</h3>
+        <ul>
+          <li>Worked on Spring Boot–based microservices integrated with Kafka for internal data streaming, ensuring backward compatibility and stability during platform migrations.</li>
+          <li>Led the Spring Boot upgrade from 1.5.x to 2.7.x for 80+ services, addressing dependency and transitive library vulnerabilities (reduced from over 2000 to fewer than 150) and ensuring compatibility with the latest framework versions.</li>
+          <li>Contributed to the Kafka Streaming Data Platform (SDP) migration from v3 to v4, implementing required code changes, configuration updates, and testing strategies to align with new internal standards.</li>
+          <li>Performed schema transformation and dataset registration using internal tools, carefully flattening complex legacy data structures to ensure compatibility with the new schema format and downstream processing.</li>
+          <li>Wrote and maintained unit, functional, and acceptance tests using JUnit, Mockito, and Cucumber, following Acceptance Test–Driven Development (ATDD) practices to improve code reliability and regression detection.</li>
+          <li>Enhanced CI/CD pipelines in Jenkins, configuring build and deployment stages, adding quality gates, and ensuring proper integration testing before deployment.</li>
+          <li>Supported multiple stages of the release lifecycle: performing non-prod testing, validating results, and ensuring production deployments met internal readiness standards.</li>
+          <li>Monitored application health and system logs using Splunk and AWS CloudWatch, identifying and resolving issues during and after releases.</li>
+          <li>Collaborated with repository owner teams for PR reviews and release approvals, ensuring compliance with internal quality and security guidelines.</li>
+          <li>Conducted knowledge transfer (KT) sessions to onboard team members, guiding them through SDP migration, testing, release verification, and dataset registration workflows.</li>
+          <li>Used Excel-based trackers to record release progress, PR statuses, test results, and validation outcomes across multiple microservices.</li>
+          <li>Implemented IAM role pre-checks and validation in deployment flows, improving release reliability and reducing failure rates from ~9% to below 5%.</li>
+          <li>Developed and enhanced error-handling mechanisms in deployment pipelines to detect and isolate issues like health check failures and AWS configuration mismatches, improving troubleshooting speed and developer productivity.</li>
+          <li>Worked with SREs to validate Route 53 regional failover between East and West AWS regions for ECS services, ensuring continuity and high availability.</li>
+          <li>Maintained and enhanced the Gear application, which automated cloud deployments via Jenkins pipelines and AWS ECS, including:</li>
+          <li style="margin-left:18px">Adding IAM role existence and permission validation before deployment.</li>
+          <li style="margin-left:18px">Integrating automatic retrieval of CloudWatch log URLs for failed deployments to simplify debugging.</li>
+          <li style="margin-left:18px">Incorporating Docker image vulnerability scans within PR checks for proactive security validation.</li>
+          <li>Participated in end-to-end release testing and post-deployment verification, ensuring successful integration of new components into existing distributed systems.</li>
+          <li>Applied Spring Security (OAuth2) for securing APIs and implementing access token validation for internal authentication.</li>
+          <li>Collaborated with cross-functional teams to troubleshoot environment issues, test pipeline failures, and coordinate deployments across multiple regions and services.</li>
+        </ul>
+
+        <h3>Java Full-Stack Developer — Previous Company — Jan 2020 – May 2021</h3>
+        <ul>
+          <li>Designed and developed microservices and REST APIs using Spring Boot and Spring Cloud, integrating them with Angular 8 front-end components for full-stack delivery.</li>
+          <li>Implemented Spring Data JPA for database persistence and optimized queries to improve response time across PostgreSQL and MongoDB.</li>
+          <li>Developed and maintained Kafka producers and consumers for asynchronous message exchange between microservices.</li>
+          <li>Automated builds and deployments using Jenkins pipelines and containerized services via Docker.</li>
+          <li>Deployed and managed applications on AWS EC2 and S3, configuring IAM roles and policies for controlled access.</li>
+          <li>Performed load, stress, and performance testing using JMeter, identifying performance bottlenecks and improving throughput.</li>
+          <li>Implemented Spring Security with OAuth2.0 for secure authentication and authorization of REST endpoints.</li>
+          <li>Collaborated in Agile/Scrum ceremonies, participating in design discussions, sprint reviews, and peer code reviews.</li>
+          <li>Worked closely with QA and DevOps engineers to streamline release automation and resolve environment-related issues.</li>
+        </ul>
+
+        <h3>Java Developer — Earlier Company — Jan 2018 – Dec 2019</h3>
+        <ul>
+          <li>Developed backend modules using Spring MVC, Spring JDBC, and Hibernate, implementing DAO and service layers following clean architecture principles.</li>
+          <li>Integrated Kafka for message streaming, including logic for failed message reprocessing based on offset tracking.</li>
+          <li>Implemented RESTful and SOAP web services, ensuring reliable integration with internal and external systems.</li>
+          <li>Used JUnit and Mockito for automated unit testing and integrated builds via Maven and Jenkins.</li>
+          <li>Leveraged AWS SDK for S3 data storage and SNS notifications to integrate cloud-based communication within legacy systems.</li>
+          <li>Implemented OAuth2-based authentication to secure REST APIs and manage access control.</li>
+          <li>Performed debugging and production issue resolution using logs and monitoring tools, ensuring minimal downtime.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © <span id="y"></span> Yangzoom Pun Magar · GitHub Pages
+  </footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
