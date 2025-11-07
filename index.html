@@ -5,25 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Indap Pun Magar — Senior Software Engineer</title>
   <style>
-    :root { --blue:#0b5cab; --ink:#1f2937; --muted:#6b7280; }
+    :root { --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --accent:#111827; }
     * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans'; color: var(--ink); }
-    header { padding: 36px 20px; text-align:center; border-bottom:1px solid #e5e7eb; }
-    h1 { margin:0; font-size: 28px; color: var(--blue); }
-    h2 { color: var(--blue); margin: 28px 0 12px; font-size: 18px; }
-    h3 { margin: 18px 0 8px; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans'; color: var(--ink); background:#ffffff;}
+    header { padding: 36px 20px; text-align:center; border-bottom:1px solid var(--line); }
+    h1 { margin:0; font-size: 28px; color: var(--accent); letter-spacing: .2px; }
+    h2 { color: var(--accent); margin: 28px 0 12px; font-size: 18px; }
+    h3 { margin: 18px 0 8px; color: var(--accent); }
     .sub { color: var(--muted); margin-top:6px; }
     .container { max-width: 1000px; margin: 0 auto; padding: 18px 20px 42px; }
     .grid { display:grid; grid-template-columns: 1fr; gap: 20px; }
     @media(min-width: 980px){ .grid { grid-template-columns: 320px 1fr; } }
-    .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
+    .card { border:1px solid var(--line); border-radius: 12px; padding: 16px; background:#fff; }
     ul { margin: 8px 0 0 20px; }
     li { margin: 6px 0; }
-    a.btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--blue); color:var(--blue); text-decoration:none; margin-right:8px; }
-    a.btn.primary { background: var(--blue); color:#fff; }
+    a.btn { display:inline-block; padding:10px 14px; border-radius:10px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; margin-right:8px; }
+    a.btn.primary { background: var(--accent); color:#fff; }
     .stack dt { font-weight:600; margin-top:8px; }
     .stack dd { margin:0 0 4px 0; color:var(--muted); }
-    footer { text-align:center; color: var(--muted); padding: 24px 16px; border-top:1px solid #e5e7eb; }
+    footer { text-align:center; color: var(--muted); padding: 24px 16px; border-top:1px solid var(--line); }
   </style>
 </head>
 <body>
@@ -31,8 +31,8 @@
     <h1>Indap Pun Magar</h1>
     <div class="sub">Senior Software Engineer · FinTech</div>
     <div style="margin-top:10px;">
-      <a class="btn primary" href="./Indap_Pun_Magar_Resume.pdf">Download PDF</a>
-      <a class="btn" href="./Indap_Pun_Magar_Resume.docx">Download Word</a>
+      <a class="btn primary" href="./assets/Indap_Pun_Magar_Resume.pdf">Download PDF</a>
+      <a class="btn" href="./assets/Indap_Pun_Magar_Resume.docx">Download Word</a>
     </div>
   </header>
 
