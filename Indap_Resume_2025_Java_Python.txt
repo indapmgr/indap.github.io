@@ -1,0 +1,58 @@
+﻿Indap Pun Magar
+Senior Software Engineer – Java, Cloud Automation & Python
+indapmgr@gmail.com | 580-650-8411 | LinkedIn 
+
+
+Professional Summary
+Senior Software Engineer with strong expertise in Java Spring Boot, Kafka, and distributed backend systems, complemented by hands-on Python experience in cloud automation and AWS-based deployment tooling. Skilled in modernizing legacy Java services, improving CI/CD pipelines, and strengthening service reliability in large microservice ecosystems. Applied Python to enhance ECS deployment workflows, automate IAM and configuration checks, and streamline operational diagnostics. Known for delivering scalable solutions, improving release quality, and collaborating across platform, DevOps, and SRE teams.
+Technical Skills
+Languages: Python, Java (8/17)
+Cloud & DevOps: AWS (ECS, EC2, ALB, S3, CloudWatch, Lambda, Step Functions, IAM), Jenkins, Docker, Terraform, GitHub Actions
+Frameworks: Spring Boot, Spring Security, Hibernate
+Databases: PostgreSQL, MySQL, MongoDB, DynamoDB
+Messaging: Kafka, SNS, SQS
+Testing: JUnit, Mockito, Cucumber, ATDD
+Observability: Splunk, CloudWatch, Grafana, Prometheus
+Senior Software Engineer – Java Backend & Platform Modernization
+Capital One | May 2021 – Present
+* Modernized an ecosystem of 80+ Spring Boot services by leading the upgrade from 1.5.x → 2.7.x, eliminating 2000+ critical and high vulnerabilities, improving performance, and bringing the platform into long-term support compliance.
+* Accelerated streaming platform modernization by contributing to the Kafka SDP migration (legacy → newer version), driving configuration alignment, refactoring service integrations, and establishing a validated testing strategy for seamless adoption.
+* Improved data quality and system interoperability by performing schema transformations and dataset registrations, flattening complex legacy structures to enable clean ingestion and downstream analytics.
+* Increased reliability and reduced regressions by implementing comprehensive ATDD testing with JUnit, Mockito, and Cucumber, strengthening the service-level test matrix across critical microservices.
+* Strengthened release assurance by driving non-prod testing, validation, and final production readiness checks across multiple microservices during major migration cycles.
+* Reduced operational noise and improved service stability by proactively monitoring distributed systems using Splunk and CloudWatch, performing rapid root-cause analysis and resolving release- and environment-related issues.
+* Partnered with repository-owner teams during PR reviews to ensure alignment with internal coding, security, and operational guidelines.
+* Uplifted team competency and delivery speed by conducting knowledge-transfer sessions on SDP migration, testing strategy, and release verification workflows adopted by both new and senior team members.
+* Worked with Java microservices that interacted with DynamoDB-backed components, contributing to troubleshooting, integration validation, and AWS SDK–based service communication.
+* Streamlined migration and release coordination for 40+ services by maintaining structured trackers for PR status, test validation, and production readiness.
+* Enabled reliable cross-environment delivery by collaborating with platform, DevOps, data, and SRE teams to troubleshoot complex environment issues and coordinate multi-region deployments.
+Senior Software Engineer – Python Automation & Cloud Deployment (Gear Application Project)
+Capital One | May 2021 – Present
+* Enhanced and stabilized an internal Python-based Gear deployment platform integrated with Jenkins CI/CD, improving automation reliability for containerized rollouts on AWS ECS, ALB, and VPC networks.
+* Reduced deployment failure rates from ~9% to below 5% by instrumenting intelligent error diagnostics in Python using Boto3 and internal libraries, surfacing root-cause–specific guidance directly in Jenkins logs.
+* Improved operational safety by implementing Python-based IAM role validation that prevented misconfigured releases (e.g., wrong environment roles), reducing pipeline rollbacks and wasted developer cycles.
+* Accelerated triage time by adding automated CloudWatch deep-links in Jenkins, enabling one-click navigation to ECS task logs; this cut debugging effort from hours to minutes for common deployment failures.
+* Strengthened container security and compliance by building GitHub PR pre-checks (TypeScript) that enforced monthly Docker base-image updates, preventing outdated or vulnerable images from entering production pipelines.
+* Modernized internal infrastructure tooling by leading the migration of Bogiefile v1 → v2 using AWS Lambda and Step Functions, automating configuration merging and ensuring backward compatibility across an ecosystem of 1,600+ services that relied on the Gear deployment platform.
+* Increased team capability and autonomy by mentoring engineers new to Python, sharing best practices for AWS automation and CI/CD debugging, and delivering knowledge-transfer sessions adopted across the team.
+Java Full-Stack Developer
+Charter Communications | Jan 2020 – May 2021
+* Designed and developed microservices and REST APIs using Spring Boot and Spring Cloud, integrated with Angular 8 front-end components for full-stack delivery.
+* Implemented Spring Data JPA for database persistence and optimized queries for PostgreSQL and MongoDB.
+* Developed Kafka producers and consumers for asynchronous communication between services.
+* Automated builds and deployments using Jenkins pipelines and containerized services via Docker.
+* Deployed and managed applications on AWS EC2 and S3, configuring IAM roles and policies for secure access.
+* Performed load, stress, and performance testing using JMeter, identifying bottlenecks and improving throughput.
+* Implemented Spring Security with OAuth2.0 for authentication and authorization of REST endpoints.
+* Collaborated in Agile ceremonies, sprint reviews, and peer code reviews to improve delivery quality.
+Java Developer
+Citi Group | Jan 2018 – Dec 2019
+* Developed backend modules using Spring MVC, Spring JDBC, and Hibernate, implementing DAO and service layers following clean architecture principles.
+* Integrated Kafka for message streaming, including logic for failed message reprocessing based on offset tracking.
+* Implemented RESTful and SOAP web services, ensuring reliable integration with internal and external systems.
+* Used JUnit and Mockito for automated testing and integrated builds via Maven and Jenkins.
+* Leveraged AWS SDK for S3 data storage and SNS notifications to integrate cloud-based communication within legacy systems.
+* Implemented OAuth2-based authentication to secure REST APIs and manage access control.
+* Performed debugging and production issue resolution using logs and monitoring tools, ensuring minimal downtime.
+Education
+Bachelor of Science in Computer Science, Southwestern Oklahoma State University
