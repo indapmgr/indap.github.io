@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional profile showcasing work experience, skills, and education">
-    <title>Professional Profile - indapmgr</title>
+    <meta name="description" content="Indap Pun Magar - Senior Software Engineer specializing in Java, Cloud Automation & Python">
+    <title>Indap Pun Magar - Senior Software Engineer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="profile-header">
-                <h1>Your Name</h1>
-                <p class="tagline">Software Engineer | Full Stack Developer</p>
+                <h1>Indap Pun Magar</h1>
+                <p class="tagline">Senior Software Engineer – Java, Cloud Automation & Python</p>
                 <div class="contact-info">
-                    <a href="mailto:your.email@example.com">📧 your.email@example.com</a>
+                    <a href="mailto:indapmgr@gmail.com">📧 indapmgr@gmail.com</a>
+                    <a href="tel:580-650-8411">📱 580-650-8411</a>
                     <a href="https://github.com/indapmgr" target="_blank">🔗 GitHub</a>
-                    <a href="https://linkedin.com/in/yourprofile" target="_blank">💼 LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/indapmgr" target="_blank">💼 LinkedIn</a>
                 </div>
             </div>
         </header>
@@ -25,10 +26,11 @@
             <section class="about">
                 <h2>Professional Summary</h2>
                 <p>
-                    Experienced software engineer with a strong background in full-stack development, 
-                    passionate about building scalable applications and solving complex technical challenges. 
-                    Proven track record of delivering high-quality software solutions and collaborating 
-                    effectively with cross-functional teams.
+                    Senior Software Engineer with strong expertise in <strong>Java Spring Boot</strong>, <strong>Kafka</strong>, 
+                    and distributed backend systems, complemented by hands-on <strong>Python</strong> experience in cloud automation 
+                    and AWS-based deployment tooling. Proven track record of modernizing large-scale microservice ecosystems, 
+                    improving deployment reliability, and driving platform migrations that enhance system performance, security, 
+                    and operational efficiency.
                 </p>
             </section>
 
@@ -37,43 +39,73 @@
                 
                 <div class="job">
                     <div class="job-header">
-                        <h3>Senior Software Engineer</h3>
-                        <span class="duration">January 2022 - Present</span>
+                        <h3>Senior Software Engineer – Java Backend & Platform Modernization</h3>
+                        <span class="duration">May 2021 - Present</span>
                     </div>
-                    <p class="company">Tech Company Inc. | San Francisco, CA</p>
+                    <p class="company">Capital One</p>
                     <ul class="responsibilities">
-                        <li>Led development of microservices architecture serving 1M+ daily active users</li>
-                        <li>Improved system performance by 40% through optimization and caching strategies</li>
-                        <li>Mentored junior developers and conducted code reviews</li>
-                        <li>Collaborated with product team to define technical requirements and roadmap</li>
+                        <li>Modernized an ecosystem of <strong>80+ Spring Boot services</strong> by leading the upgrade from 1.5.x → 2.7.x, eliminating 2000+ critical and high vulnerabilities, improving performance, and bringing the platform into compliance with modern standards</li>
+                        <li>Accelerated streaming platform modernization by contributing to the <strong>Kafka SDP migration</strong> (legacy → newer version), driving configuration alignment, refactoring service integrations, and establishing migration patterns adopted across teams</li>
+                        <li>Improved data quality and system interoperability by performing schema transformations and dataset registrations, flattening complex legacy structures to enable clean ingestion and downstream analytics</li>
+                        <li>Increased reliability and reduced regressions by implementing comprehensive <strong>ATDD testing</strong> with JUnit, Mockito, and Cucumber, strengthening the service-level test matrix across critical microservices</li>
+                        <li>Strengthened release assurance by driving non-prod testing, validation, and final production readiness checks across multiple microservices during major migration cycles</li>
+                        <li>Reduced operational noise and improved service stability by proactively monitoring distributed systems using <strong>Splunk and CloudWatch</strong>, performing rapid root-cause analysis and resolving release- and environment-specific issues</li>
+                        <li>Worked with Java microservices that interacted with <strong>DynamoDB-backed components</strong>, contributing to troubleshooting, integration validation, and AWS SDK–based service communication</li>
+                        <li>Streamlined migration and release coordination for <strong>40+ services</strong> by maintaining structured trackers for PR status, test validation, and production readiness</li>
+                        <li>Enabled reliable cross-environment delivery by collaborating with platform, DevOps, data, and SRE teams to troubleshoot complex environment issues and coordinate multi-region deployments</li>
+                        <li>Uplifted team competency and delivery speed by conducting knowledge-transfer sessions on SDP migration, testing strategy, and release verification workflows adopted by both new and senior team members</li>
                     </ul>
                 </div>
 
                 <div class="job">
                     <div class="job-header">
-                        <h3>Software Engineer</h3>
-                        <span class="duration">June 2019 - December 2021</span>
+                        <h3>Senior Software Engineer – Python Automation & Cloud Deployment</h3>
+                        <span class="duration">May 2021 - Present</span>
                     </div>
-                    <p class="company">Startup Solutions LLC | Remote</p>
+                    <p class="company">Capital One | Gear Application Project</p>
                     <ul class="responsibilities">
-                        <li>Developed and maintained RESTful APIs using Node.js and Express</li>
-                        <li>Built responsive web applications with React and TypeScript</li>
-                        <li>Implemented CI/CD pipelines using GitHub Actions and AWS</li>
-                        <li>Reduced deployment time by 60% through automation</li>
+                        <li>Enhanced and stabilized an internal <strong>Python-based Gear deployment platform</strong> integrated with Jenkins CI/CD, improving automation reliability for containerized rollouts on AWS ECS, ALB, and VPC networks</li>
+                        <li>Reduced deployment failure rates from <strong>~9% to below 5%</strong> by instrumenting intelligent error diagnostics in Python using Boto3 and internal libraries, surfacing root-cause–specific guidance directly in build logs</li>
+                        <li>Improved operational safety by implementing <strong>Python-based IAM role validation</strong> that prevented misconfigured releases (e.g., wrong environment roles), reducing pipeline rollbacks and wasted developer cycles</li>
+                        <li>Accelerated triage time by adding automated <strong>CloudWatch deep-links in Jenkins</strong>, enabling one-click navigation to ECS task logs; this cut debugging effort from hours to minutes for common deployment failures</li>
+                        <li>Strengthened container security and compliance by building <strong>GitHub PR pre-checks (TypeScript)</strong> that enforced monthly Docker base-image updates, preventing outdated or vulnerable images from entering production</li>
+                        <li>Modernized internal infrastructure tooling by leading the migration of <strong>Bogiefile v1 → v2</strong> using AWS Lambda and Step Functions, automating configuration merging and ensuring backward compatibility across 100+ repos</li>
+                        <li>Increased team capability and autonomy by mentoring engineers new to Python, sharing best practices for AWS automation and CI/CD debugging, and delivering knowledge-transfer sessions adopted across the organization</li>
                     </ul>
                 </div>
 
                 <div class="job">
                     <div class="job-header">
-                        <h3>Junior Developer</h3>
-                        <span class="duration">August 2017 - May 2019</span>
+                        <h3>Java Full-Stack Developer</h3>
+                        <span class="duration">January 2020 - May 2021</span>
                     </div>
-                    <p class="company">Digital Agency Co. | New York, NY</p>
+                    <p class="company">Charter Communications</p>
                     <ul class="responsibilities">
-                        <li>Developed client websites using HTML, CSS, JavaScript, and WordPress</li>
-                        <li>Worked with designers to implement pixel-perfect UI/UX designs</li>
-                        <li>Maintained and updated existing web applications</li>
-                        <li>Participated in agile development processes and sprint planning</li>
+                        <li>Designed and developed microservices and REST APIs using <strong>Spring Boot and Spring Cloud</strong>, integrated with Angular 8 front-end components for full-stack delivery</li>
+                        <li>Implemented <strong>Spring Data JPA</strong> for database persistence and optimized queries for PostgreSQL and MongoDB</li>
+                        <li>Developed <strong>Kafka producers and consumers</strong> for asynchronous communication between services</li>
+                        <li>Automated builds and deployments using <strong>Jenkins pipelines</strong> and containerized services via Docker</li>
+                        <li>Deployed and managed applications on <strong>AWS EC2 and S3</strong>, configuring IAM roles and policies for secure access</li>
+                        <li>Performed load, stress, and performance testing using <strong>JMeter</strong>, identifying bottlenecks and improving throughput</li>
+                        <li>Implemented <strong>Spring Security with OAuth2.0</strong> for authentication and authorization of REST endpoints</li>
+                        <li>Collaborated in Agile ceremonies, sprint reviews, and peer code reviews to improve delivery quality</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <h3>Java Developer</h3>
+                        <span class="duration">January 2018 - December 2019</span>
+                    </div>
+                    <p class="company">Citi Group</p>
+                    <ul class="responsibilities">
+                        <li>Developed backend modules using <strong>Spring MVC, Spring JDBC, and Hibernate</strong>, implementing DAO and service layers following clean architecture principles</li>
+                        <li>Integrated <strong>Kafka for message streaming</strong>, including logic for failed message reprocessing based on offset tracking</li>
+                        <li>Implemented <strong>RESTful and SOAP web services</strong>, ensuring reliable integration with internal and external systems</li>
+                        <li>Used <strong>JUnit and Mockito</strong> for automated testing and integrated builds via Maven and Jenkins</li>
+                        <li>Leveraged <strong>AWS SDK for S3</strong> data storage and SNS notifications to integrate cloud-based communication within legacy systems</li>
+                        <li>Implemented <strong>OAuth2-based authentication</strong> to secure REST APIs and manage access control</li>
+                        <li>Performed debugging and production issue resolution using logs and monitoring tools, ensuring minimal downtime</li>
                     </ul>
                 </div>
             </section>
@@ -84,58 +116,77 @@
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
                         <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Java 8/17</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Frontend</h3>
+                    <h3>Cloud & DevOps</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">Sass</span>
-                        <span class="skill-tag">Webpack</span>
+                        <span class="skill-tag">AWS ECS</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">AWS ALB</span>
+                        <span class="skill-tag">AWS S3</span>
+                        <span class="skill-tag">AWS Lambda</span>
+                        <span class="skill-tag">AWS Step Functions</span>
+                        <span class="skill-tag">IAM</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">GitHub Actions</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Backend</h3>
+                    <h3>Frameworks & Libraries</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">Express</span>
-                        <span class="skill-tag">Django</span>
                         <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">GraphQL</span>
+                        <span class="skill-tag">Spring Security</span>
+                        <span class="skill-tag">Spring Cloud</span>
+                        <span class="skill-tag">Spring Data JPA</span>
+                        <span class="skill-tag">Hibernate</span>
+                        <span class="skill-tag">Boto3</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Databases & Cloud</h3>
+                    <h3>Databases</h3>
                     <div class="skill-tags">
                         <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">MySQL</span>
                         <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">DynamoDB</span>
                     </div>
                 </div>
 
                 <div class="skill-category">
-                    <h3>Tools & Practices</h3>
+                    <h3>Messaging & Streaming</h3>
                     <div class="skill-tags">
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">Agile</span>
-                        <span class="skill-tag">TDD</span>
-                        <span class="skill-tag">Microservices</span>
+                        <span class="skill-tag">Kafka</span>
+                        <span class="skill-tag">SNS</span>
+                        <span class="skill-tag">SQS</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Testing & Quality</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JUnit</span>
+                        <span class="skill-tag">Mockito</span>
+                        <span class="skill-tag">Cucumber</span>
+                        <span class="skill-tag">ATDD</span>
+                        <span class="skill-tag">JMeter</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Observability & Monitoring</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">CloudWatch</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Prometheus</span>
                     </div>
                 </div>
             </section>
@@ -146,44 +197,36 @@
                 <div class="degree">
                     <div class="degree-header">
                         <h3>Bachelor of Science in Computer Science</h3>
-                        <span class="duration">2013 - 2017</span>
                     </div>
-                    <p class="institution">University of Technology</p>
-                    <p class="details">GPA: 3.8/4.0 | Dean's List | Relevant Coursework: Data Structures, Algorithms, Database Systems, Web Development</p>
-                </div>
-
-                <div class="certifications">
-                    <h3>Certifications</h3>
-                    <ul>
-                        <li>AWS Certified Solutions Architect - Associate (2022)</li>
-                        <li>Professional Scrum Master I (PSM I) (2021)</li>
-                        <li>MongoDB Certified Developer (2020)</li>
-                    </ul>
+                    <p class="institution">Southwestern Oklahoma State University</p>
                 </div>
             </section>
 
-            <section class="projects">
-                <h2>Notable Projects</h2>
-                
-                <div class="project">
-                    <h3>E-Commerce Platform</h3>
-                    <p>Built a scalable e-commerce platform handling 10K+ transactions daily using React, Node.js, and PostgreSQL. Implemented payment processing with Stripe and deployed on AWS.</p>
-                </div>
-
-                <div class="project">
-                    <h3>Real-Time Analytics Dashboard</h3>
-                    <p>Developed a real-time analytics dashboard using React, D3.js, and WebSockets. Visualized complex data streams with interactive charts and custom visualizations.</p>
-                </div>
-
-                <div class="project">
-                    <h3>Open Source Contributions</h3>
-                    <p>Active contributor to several open-source projects. Contributed features and bug fixes to popular libraries with 5K+ GitHub stars combined.</p>
+            <section class="highlights">
+                <h2>Key Achievements</h2>
+                <div class="achievement-grid">
+                    <div class="achievement-card">
+                        <div class="achievement-number">80+</div>
+                        <div class="achievement-label">Services Modernized</div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-number">2000+</div>
+                        <div class="achievement-label">Vulnerabilities Eliminated</div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-number">9% → 5%</div>
+                        <div class="achievement-label">Deployment Failure Reduction</div>
+                    </div>
+                    <div class="achievement-card">
+                        <div class="achievement-number">40+</div>
+                        <div class="achievement-label">Services Coordinated</div>
+                    </div>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p>&copy; 2024 Professional Profile. Built with ❤️ for GitHub Pages</p>
+            <p>&copy; 2025 Indap Pun Magar. Built with ❤️ for GitHub Pages</p>
         </footer>
     </div>
 </body>
