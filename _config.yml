@@ -2,7 +2,7 @@ title: Intern Engineering Handbook
 description: A practical full-stack engineering onboarding handbook for interns.
 theme: minima
 
-baseurl: ""
+baseurl: "/engineering-bootcamp-handbook"
 url: "https://indapmgr.github.io"
 
 markdown: kramdown
@@ -13,4 +13,4 @@ plugins:
 
 # Navigation
 header_pages:
-  - docs/index.md
+  - index.md
