@@ -66,4 +66,4 @@ Understand problem → Break it down → Implement → Debug → Deliver
 
 ---
 
-*Back to [GitHub Repository](https://github.com/indapmgr/indap.github.io)*
+*Back to [GitHub Repository](https://github.com/indapmgr/engineering-bootcamp-handbook)*

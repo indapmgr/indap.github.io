@@ -2,7 +2,7 @@
 
 A practical, full-stack engineering onboarding handbook for interns.
 
-Published as a GitHub Pages documentation site at **[https://indapmgr.github.io](https://indapmgr.github.io)**.
+Published as a GitHub Pages documentation site at **[https://indapmgr.github.io/engineering-bootcamp-handbook/](https://indapmgr.github.io/engineering-bootcamp-handbook/)**.
 
 ---
 
@@ -26,7 +26,7 @@ Published as a GitHub Pages documentation site at **[https://indapmgr.github.io]
 
 ### View online
 
-Open the handbook at: [https://indapmgr.github.io](https://indapmgr.github.io)
+Open the handbook at: [https://indapmgr.github.io/engineering-bootcamp-handbook/](https://indapmgr.github.io/engineering-bootcamp-handbook/)
 
 ### Run locally with Jekyll
 
@@ -35,14 +35,14 @@ Open the handbook at: [https://indapmgr.github.io](https://indapmgr.github.io)
 gem install bundler jekyll
 
 # Clone and serve
-git clone https://github.com/indapmgr/indap.github.io.git
-cd indap.github.io
+git clone https://github.com/indapmgr/engineering-bootcamp-handbook.git
+cd engineering-bootcamp-handbook
 bundle init
 bundle add jekyll minima jekyll-feed jekyll-seo-tag
 bundle exec jekyll serve
 ```
 
-Open [http://localhost:4000](http://localhost:4000) in your browser.
+Open [http://localhost:4000/engineering-bootcamp-handbook/](http://localhost:4000/engineering-bootcamp-handbook/) in your browser.
 
 ---
 
@@ -59,7 +59,7 @@ Being ready means:
 ## Repository Structure
 
 ```text
-indap.github.io/
+engineering-bootcamp-handbook/
 ├── _config.yml                         # Jekyll / GitHub Pages configuration
 ├── README.md                           # This file
 ├── index.md                            # Handbook homepage
