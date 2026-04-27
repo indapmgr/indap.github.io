@@ -13,4 +13,4 @@ plugins:
 
 # Navigation
 header_pages:
-  - docs/index.md
+  - index.md
