@@ -1,290 +1,333 @@
-# Part 3 — API Client Integration
+# 🐍 Part 3 — Virtual Environments & API Testing
 
-> **Golden rule:** A client never talks to the database directly. It only talks to backend APIs.
+> **Key idea:** A virtual environment isolates your Python packages per project. Testing your API from Python confirms it works correctly — no browser required.
 
 ---
 
 ## Navigation
 
-[← Part 2: Backend](part-2-backend-fastapi.md) | [Part 4: Docker →](part-4-docker.md)
+[← Part 2: Backend](part-2-backend-fastapi) | [Part 4: Docker →](part-4-docker)
 
 ---
 
-## 1. Client Integration Thinking
+## 1. Why Virtual Environments?
 
-This part uses a small Next.js frontend as a client for your backend. The goal is not to become a frontend specialist; the goal is to prove your API works from outside the backend process.
+Imagine you have two Python projects:
 
-**Responsibilities:**
+- Project A needs `fastapi==0.95`
+- Project B needs `fastapi==0.104`
 
-| Responsibility | What it means |
-|----------------|--------------|
-| **State** | Track data that changes over time (user input, API responses) |
-| **Interaction** | Handle button clicks, form submissions, and user events |
-| **API communication** | Fetch data from and send data to the backend |
-| **Rendering** | Display API data to the user |
-
-### Frontend Request Flow
+If you install packages globally (without a virtual environment), they conflict — you can only have one version installed at a time. A **virtual environment** (`venv`) creates an isolated folder of packages for each project.
 
 ```text
-User clicks → Event handler → API call → Response → State update → UI re-render
+your-machine/
+├── project-a/
+│   └── venv/       ← Project A's packages (fastapi 0.95, etc.)
+└── project-b/
+    └── venv/       ← Project B's packages (fastapi 0.104, etc.)
 ```
+
+No conflicts. Each project stays clean and independent.
 
 ---
 
-## 2. Next.js Project Structure
+## 2. Creating a Virtual Environment
 
-```text
-frontend/
-├── pages/
-│   ├── index.tsx        # Home page
-│   └── _app.tsx         # App wrapper
-├── components/
-│   ├── UserForm.tsx     # Form to create a user
-│   └── UserList.tsx     # Component to display users
-├── services/
-│   └── api.ts           # All API calls live here
-├── public/              # Static assets
-├── package.json
-└── Dockerfile
-```
+Navigate into your project folder, then run:
 
----
-
-## 3. Creating a Next.js Project
+**Mac / Linux:**
 
 ```bash
-npx create-next-app@latest frontend --typescript
-cd frontend
-npm run dev
+python3 -m venv venv
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the app.
+**Windows:**
 
----
+```bash
+python -m venv venv
+```
 
-## 4. API Service Layer
+This creates a folder called `venv/` inside your project. You only need to do this **once** per project.
 
-All API calls belong in a single service file. Components call the service; they never call `fetch` directly.
+> **Important:** Add `venv/` to your `.gitignore` file — never commit your virtual environment to Git. It is large and machine-specific.
 
-**`services/api.ts`**
+Your `.gitignore` should contain:
 
-```typescript
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-
-export async function createUser(data: {
-  name: string;
-  email: string;
-  age: number;
-}) {
-  const response = await fetch(`${BASE_URL}/users`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-
-  if (!response.ok) {
-    throw new Error(`Failed to create user: ${response.status}`);
-  }
-
-  return response.json();
-}
-
-export async function getUsers() {
-  const response = await fetch(`${BASE_URL}/users`);
-
-  if (!response.ok) {
-    throw new Error(`Failed to fetch users: ${response.status}`);
-  }
-
-  return response.json();
-}
+```text
+venv/
+__pycache__/
+*.pyc
+.env
 ```
 
 ---
 
-## 5. UserForm Component
+## 3. Activating the Virtual Environment
 
-**`components/UserForm.tsx`**
+You must activate the venv **every time you open a new terminal window**. Without activating, you're using the global Python and your project packages won't be found.
 
-```typescript
-import { useState } from "react";
-import { createUser } from "../services/api";
+**Mac / Linux:**
 
-interface Props {
-  onUserCreated: () => void;
-}
+```bash
+source venv/bin/activate
+```
 
-export default function UserForm({ onUserCreated }: Props) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [age, setAge] = useState("");
-  const [error, setError] = useState("");
+**Windows (PowerShell):**
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
+```bash
+venv\Scripts\Activate.ps1
+```
 
-    try {
-      await createUser({ name, email, age: parseInt(age) });
-      setName("");
-      setEmail("");
-      setAge("");
-      onUserCreated();
-    } catch (err) {
-      setError("Failed to create user. Check the backend is running.");
-    }
-  }
+**Windows (Command Prompt / Git Bash):**
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Name"
-        required
-      />
-      <input
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-        type="email"
-        required
-      />
-      <input
-        value={age}
-        onChange={(e) => setAge(e.target.value)}
-        placeholder="Age"
-        type="number"
-        required
-      />
-      <button type="submit">Create User</button>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-    </form>
-  );
-}
+```bash
+venv\Scripts\activate
+```
+
+When active, your terminal prompt changes to show `(venv)` at the start:
+
+```text
+(venv) user@machine:~/my-project$
+```
+
+To deactivate (return to global Python):
+
+```bash
+deactivate
 ```
 
 ---
 
-## 6. Displaying Users
+## 4. Common Virtualenv Problems
 
-**`pages/index.tsx`**
+| Problem | Cause | Fix |
+|---------|-------|-----|
+| `No such file or directory: venv/bin/activate` | venv not created yet | Run `python3 -m venv venv` first |
+| `python: command not found` | Python not installed or wrong command | Try `python3` on Mac/Linux, or install Python on Windows |
+| `Activate.ps1 cannot be loaded` (Windows PowerShell) | Execution policy blocked scripts | Run: `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` |
+| Packages not found after install | venv not activated | Activate it first: `source venv/bin/activate` |
+| Wrong Python version in venv | System Python is 2.x or old | Specify: `python3.11 -m venv venv` |
+| `pip: command not found` | pip not available | Try `python -m pip install ...` instead |
 
-```typescript
-import { useEffect, useState } from "react";
-import { getUsers } from "../services/api";
-import UserForm from "../components/UserForm";
+---
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-  age: number;
-}
+## 5. Installing Packages
 
-export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
+With your venv active, install a package:
 
-  async function loadUsers() {
-    try {
-      const data = await getUsers();
-      setUsers(data);
-    } catch {
-      console.error("Could not load users");
-    }
-  }
+```bash
+pip install fastapi uvicorn requests
+```
 
-  useEffect(() => {
-    loadUsers();
-  }, []);
+Save all installed packages so teammates can recreate your exact environment:
 
-  return (
-    <main>
-      <h1>Users</h1>
-      <UserForm onUserCreated={loadUsers} />
+```bash
+pip freeze > requirements.txt
+```
 
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name} — {user.email} — Age: {user.age}
-          </li>
-        ))}
-      </ul>
-    </main>
-  );
-}
+The file will look like:
+
+```text
+fastapi==0.104.1
+uvicorn==0.24.0
+requests==2.31.0
+```
+
+Install from an existing `requirements.txt` (what teammates do when they clone your repo):
+
+```bash
+pip install -r requirements.txt
 ```
 
 ---
 
-## 7. Async/Await and Promises
+## 6. Full Project Setup Workflow
 
-Every API call is asynchronous — the result is not available immediately.
+Every time you start a new project, follow this sequence:
 
-```typescript
-// Wrong — this does NOT wait for the result
-const users = getUsers();  // users is a Promise, not data
+```bash
+# 1. Create the project directory
+mkdir my-project
+cd my-project
 
-// Correct — await pauses until the Promise resolves
-const users = await getUsers();  // users is the actual data
+# 2. Create a virtual environment (one-time setup)
+python3 -m venv venv
+
+# 3. Activate it (every new terminal session)
+source venv/bin/activate          # Mac/Linux
+# venv\Scripts\activate           # Windows
+
+# 4. Install dependencies
+pip install fastapi uvicorn requests
+
+# 5. Save dependencies for others
+pip freeze > requirements.txt
+
+# 6. Start coding!
 ```
-
-Always use `async/await` inside an `async` function.
 
 ---
 
-## 8. Common Frontend Mistakes
+## 7. Testing Your API with Python
 
-| Mistake | Symptom | Fix |
-|---------|---------|-----|
-| Wrong API URL | Network error in DevTools | Check `BASE_URL` and the backend port |
-| Backend not running | `ERR_CONNECTION_REFUSED` | Start the backend with `uvicorn` or `docker compose up` |
-| CORS error | Error in console mentioning CORS | Add CORS middleware to FastAPI (see below) |
-| Mutating state directly | UI does not update | Always create a new array/object with spread (`[...arr]`) |
-| Forgetting `await` | Variables contain Promises, not data | Add `await` before every API call |
+Instead of opening a browser, you can test your FastAPI endpoints with a simple Python script using the `requests` library. This is a standard backend technique.
 
-### Adding CORS to FastAPI
+The `requests` library lets you make HTTP calls from Python code — the same kind of calls a browser makes, but from a script you control.
+
+Install it (with your venv active):
+
+```bash
+pip install requests
+```
+
+**`test_api.py`**
 
 ```python
-from fastapi.middleware.cors import CORSMiddleware
+import requests   # HTTP client library — pip install requests
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+BASE_URL = "http://localhost:8000"   # Address where your FastAPI server is running
+
+# ── Test 1: Create a new user ──────────────────────────────────────────────
+print("Testing POST /users...")
+
+response = requests.post(
+    f"{BASE_URL}/users",              # URL to call
+    json={                            # Data to send; requests serialises it to JSON
+        "name": "Alice",
+        "email": "alice@example.com",
+        "age": 28
+    }
 )
+
+print(f"  Status: {response.status_code}")   # Expect 201 Created
+print(f"  Body:   {response.json()}")        # Expect the new user with an id
+
+# ── Test 2: List all users ─────────────────────────────────────────────────
+print("\nTesting GET /users...")
+
+response = requests.get(f"{BASE_URL}/users")
+
+print(f"  Status: {response.status_code}")   # Expect 200 OK
+print(f"  Body:   {response.json()}")        # Expect a list containing Alice
+```
+
+Run it (with your FastAPI server running in a separate terminal):
+
+```bash
+python test_api.py
+```
+
+Expected output:
+
+```text
+Testing POST /users...
+  Status: 201
+  Body:   {'id': 1, 'name': 'Alice', 'email': 'alice@example.com', 'age': 28}
+
+Testing GET /users...
+  Status: 200
+  Body:   [{'id': 1, 'name': 'Alice', 'email': 'alice@example.com', 'age': 28}]
 ```
 
 ---
 
-## 9. Debugging Frontend
+## 8. Testing Error Cases
 
-| Tool | How to use it |
-|------|--------------|
-| Browser DevTools → Network tab | See every API request, its URL, method, status, and response body |
-| Browser DevTools → Console | See JavaScript errors and `console.log` output |
-| React state | Add `console.log(users)` to confirm state is updating |
-| Check response body | Even a failed request may return a helpful error message |
+A good test also checks what happens when things go wrong:
+
+```python
+import requests
+
+BASE_URL = "http://localhost:8000"
+
+# ── Test: Send wrong data type ─────────────────────────────────────────────
+print("Testing POST /users with invalid age...")
+
+response = requests.post(
+    f"{BASE_URL}/users",
+    json={
+        "name": "Bob",
+        "email": "bob@example.com",
+        "age": "not-a-number"    # age should be an int — FastAPI should reject this
+    }
+)
+
+# FastAPI validates input automatically; invalid data returns 422
+print(f"  Status: {response.status_code}")   # Expect 422 Unprocessable Entity
+print(f"  Body:   {response.json()}")        # Expect a validation error message
+```
 
 ---
 
-## 10. Mini Project
+## 9. Testing with a Connection-Error Guard
 
-Build a user management page:
+If the server is not running, your test script will crash. Add a guard:
 
-1. Form with `name`, `email`, `age` fields
-2. Submit sends `POST /users` to the backend
-3. After submit, reload the user list
-4. Display all users in a list from `GET /users`
+```python
+import requests
+
+BASE_URL = "http://localhost:8000"
+
+try:
+    response = requests.get(f"{BASE_URL}/users", timeout=5)   # timeout=5 prevents hanging
+    print(f"Status: {response.status_code}")
+    print(f"Users:  {response.json()}")
+except requests.exceptions.ConnectionError:
+    # This happens when the server is not running at all
+    print("ERROR: Could not connect to the server.")
+    print("Make sure the FastAPI server is running: uvicorn app.main:app --reload")
+except requests.exceptions.Timeout:
+    # This happens when the server is running but takes too long to respond
+    print("ERROR: The server took too long to respond.")
+```
+
+---
+
+## 10. Weekly Demo Workflow
+
+Every week you will build something new, test it, and demo it to the team.
+
+### Before the Demo
+
+- [ ] Code runs without errors
+- [ ] The feature does what it is supposed to do
+- [ ] You can explain what you built and why
+- [ ] You know which HTTP endpoints are involved
+- [ ] You have tested at least one failure case (wrong input, missing data, etc.)
+
+### During the Demo
+
+1. Start the server: `uvicorn app.main:app --reload`
+2. Open `http://localhost:8000/docs` — show the auto-generated docs
+3. Walk through the endpoint(s) you built
+4. Send a request from `/docs` or your test script
+5. Show the response
+6. Explain what each part does (route, schema, service, database)
+
+### After the Demo
+
+Write a short reflection (a few sentences is fine):
+
+- What did you build?
+- What was hard or confusing?
+- What would you do differently next time?
+
+---
+
+## 11. Mini Project
+
+1. Create a Python virtual environment for your FastAPI project.
+2. Install `fastapi`, `uvicorn`, and `requests`.
+3. Write a `test_api.py` that tests both `POST /users` and `GET /users`.
+4. Run the tests and fix any failures.
 
 ---
 
 ## Exercises
 
-1. Add an error message that shows when the API call fails.
-2. Disable the submit button while the request is in progress.
-3. Add a "Refresh" button that reloads the user list.
+1. Add a test for `GET /users/{user_id}` — verify it returns `404` when the user doesn't exist.
+2. Add a connection-error guard to `test_api.py` so it prints a helpful message if the server is not running.
+3. Prepare a 3-minute demo of your working API.
 
 ---
 
@@ -292,14 +335,14 @@ Build a user management page:
 
 | Concept | Key Takeaway |
 |---------|-------------|
-| Golden rule | Clients never talk to DB — only to backend APIs |
-| State | Use `useState` to track data that changes |
-| API service | Put all `fetch` calls in one service file |
-| Async/await | Always `await` API calls inside `async` functions |
-| CORS | Add CORS middleware to FastAPI when frontend and backend run on different ports |
+| Virtual environment | Isolates packages per project; prevents version conflicts |
+| Activation | Must activate in every new terminal session |
+| `requirements.txt` | Records all dependencies so anyone can recreate the environment |
+| `requests` library | Test your API from Python — no browser needed |
+| Weekly demo | Build → Test → Demo → Reflect each week |
 
 ---
 
 ## Navigation
 
-[← Part 2: Backend](part-2-backend-fastapi.md) | [Part 4: Docker →](part-4-docker.md)
+[← Part 2: Backend](part-2-backend-fastapi) | [Part 4: Docker →](part-4-docker)

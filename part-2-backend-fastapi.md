@@ -1,4 +1,4 @@
-# Part 2 — Backend: FastAPI
+# ⚡ Part 2 — Backend: FastAPI
 
 > **Key idea:** The backend is responsible for validation, business logic, data handling, and error handling. The frontend never touches the database.
 
@@ -6,13 +6,13 @@
 
 ## Navigation
 
-[← Part 1: Foundations](part-1-foundations.md) | [Part 3: Frontend →](part-3-frontend-nextjs.md)
+[← Part 1: Foundations](part-1-foundations) | [Part 3: Virtualenv & Testing →](part-3-frontend-nextjs)
 
 ---
 
 ## 1. Backend Thinking
 
-The backend sits between the frontend and the database. Every request must go through the backend.
+The backend sits between the client and the database. Every request must go through the backend.
 
 **Responsibilities:**
 
@@ -38,27 +38,33 @@ A well-organised FastAPI project looks like this:
 ```text
 backend/
 ├── app/
-│   ├── main.py          # FastAPI app entry point
-│   ├── routes/          # API route handlers
-│   ├── services/        # Business logic
+│   ├── main.py          # FastAPI app entry point — where the server starts
+│   ├── routes/          # API route handlers — one file per resource
+│   ├── services/        # Business logic — keeps routes thin
 │   ├── models/          # Database models
-│   ├── schemas/         # Pydantic request/response schemas
-│   └── db/              # Database connection
-├── requirements.txt     # Python dependencies
-└── Dockerfile           # Container definition
+│   ├── schemas/         # Pydantic request/response schemas — define data shapes
+│   └── db/              # Database connection helpers
+├── requirements.txt     # Python dependencies (every library your app needs)
+└── Dockerfile           # Instructions to build a Docker container
 ```
 
 ---
 
 ## 3. FastAPI Setup
 
-Install dependencies:
+First, activate your virtual environment (see Part 3 for details), then install dependencies:
 
 ```bash
 pip install fastapi uvicorn psycopg2-binary
 ```
 
-Save to `requirements.txt`:
+Save all installed packages to `requirements.txt` so others can recreate your environment:
+
+```bash
+pip freeze > requirements.txt
+```
+
+The file will contain entries like:
 
 ```text
 fastapi
@@ -73,13 +79,15 @@ psycopg2-binary
 **`app/main.py`**
 
 ```python
-from fastapi import FastAPI
-from app.routes import users
+from fastapi import FastAPI       # FastAPI is the main framework class
+from app.routes import users      # Import our users router module
 
-app = FastAPI()
+app = FastAPI()                   # Create the application instance
 
+# Register the users router — all /users routes come from here
 app.include_router(users.router)
 
+# Health-check endpoint: a quick way to confirm the server is alive
 @app.get("/")
 def health_check():
     return {"status": "ok"}
@@ -89,6 +97,8 @@ def health_check():
 
 ## 5. Routes
 
+Routes define the API endpoints. They receive requests and return responses.
+
 **`app/routes/users.py`**
 
 ```python
@@ -96,12 +106,16 @@ from fastapi import APIRouter
 from app.schemas.user import UserCreate, UserResponse
 from app.services import user_service
 
+# APIRouter groups related endpoints; prefix means every route starts with /users
 router = APIRouter(prefix="/users", tags=["users"])
 
+# POST /users — create a new user; returns 201 Created on success
 @router.post("/", response_model=UserResponse, status_code=201)
 def create_user(user: UserCreate):
+    # Delegate the actual work to the service layer
     return user_service.create_user(user)
 
+# GET /users — return a list of all users
 @router.get("/", response_model=list[UserResponse])
 def get_users():
     return user_service.get_users()
@@ -111,18 +125,20 @@ def get_users():
 
 ## 6. Pydantic Schemas
 
-Schemas define the shape of request and response data. FastAPI uses them for automatic validation.
+Schemas define the exact shape of request and response data. FastAPI uses them for automatic validation — if the client sends the wrong type, FastAPI rejects the request immediately.
 
 **`app/schemas/user.py`**
 
 ```python
-from pydantic import BaseModel
+from pydantic import BaseModel    # BaseModel is the base class for all schemas
 
+# Schema for creating a user — defines what the client must send
 class UserCreate(BaseModel):
-    name: str
-    email: str
-    age: int
+    name: str       # Required string
+    email: str      # Required string (add EmailStr for strict validation)
+    age: int        # Required integer — FastAPI rejects strings automatically
 
+# Schema for returning a user — includes the id assigned by the database
 class UserResponse(BaseModel):
     id: int
     name: str
@@ -130,33 +146,34 @@ class UserResponse(BaseModel):
     age: int
 
     class Config:
-        from_attributes = True
+        from_attributes = True  # Lets Pydantic read data from database row objects
 ```
 
 ---
 
 ## 7. Service Layer
 
-The service layer contains business logic. Routes call services; services do not call routes.
+The service layer contains business logic. Routes call services; services do not call routes. This separation makes code easier to test and maintain.
 
 **`app/services/user_service.py`**
 
 ```python
 from app.schemas.user import UserCreate
 
-# In-memory store for the mini project (replace with DB later)
+# In-memory store for the mini project (replace with DB in Part 5)
 users_db = []
-next_id = 1
+next_id = 1   # Simple counter to give each user a unique id
 
 def create_user(user: UserCreate) -> dict:
     global next_id
+    # Build a new user dict by unpacking the Pydantic model
     new_user = {"id": next_id, **user.dict()}
-    users_db.append(new_user)
-    next_id += 1
+    users_db.append(new_user)   # Add to our in-memory list
+    next_id += 1                # Increment so the next user gets a different id
     return new_user
 
 def get_users() -> list:
-    return users_db
+    return users_db             # Return the full in-memory list
 ```
 
 ---
@@ -166,12 +183,13 @@ def get_users() -> list:
 **`app/db/connection.py`**
 
 ```python
-import psycopg2
-import os
+import psycopg2    # PostgreSQL driver for Python
+import os          # os.getenv reads environment variables safely
 
 def get_connection():
+    # Read connection details from environment variables — never hardcode passwords!
     return psycopg2.connect(
-        host=os.getenv("DB_HOST", "db"),
+        host=os.getenv("DB_HOST", "db"),          # "db" is the Docker service name
         database=os.getenv("DB_NAME", "appdb"),
         user=os.getenv("DB_USER", "postgres"),
         password=os.getenv("DB_PASSWORD", "password"),
@@ -181,6 +199,8 @@ def get_connection():
 ---
 
 ## 9. Running the Server
+
+Start the development server with auto-reload (restarts on code changes):
 
 ```bash
 uvicorn app.main:app --reload
@@ -192,19 +212,23 @@ Open the interactive API docs at:
 http://localhost:8000/docs
 ```
 
+> **Tip:** The `/docs` page is generated automatically by FastAPI. You can send test requests directly from the browser without writing any code.
+
 ---
 
 ## 10. Error Handling
 
-Use `HTTPException` to return error responses with correct status codes:
+Use `HTTPException` to return error responses with the correct HTTP status codes:
 
 ```python
 from fastapi import HTTPException
 
+# GET /users/{user_id} — returns a specific user, or 404 if not found
 @router.get("/{user_id}")
 def get_user(user_id: int):
     user = user_service.find_user(user_id)
     if user is None:
+        # Raise an HTTP 404 error — FastAPI converts this into a proper JSON response
         raise HTTPException(status_code=404, detail="User not found")
     return user
 ```
@@ -244,7 +268,7 @@ Start with an in-memory list. Replace with PostgreSQL in Part 5.
 | No input validation | Bad data reaches the database | Use Pydantic schemas |
 | Returning raw DB exceptions | Leaks internal details | Catch exceptions and return `HTTPException` |
 | Hardcoded credentials | Security risk | Use environment variables |
-| No `status_code` on POST | Returns 200 instead of 201 | Set `status_code=201` |
+| No `status_code` on POST | Returns `200` instead of `201` | Set `status_code=201` on the route decorator |
 
 ---
 
@@ -252,10 +276,10 @@ Start with an in-memory list. Replace with PostgreSQL in Part 5.
 
 | Tool | How to use it |
 |------|--------------|
-| uvicorn output | Read the terminal for errors and stack traces |
-| `/docs` endpoint | Test endpoints interactively without a frontend |
+| uvicorn terminal output | Read it for errors and stack traces — the line number is there |
+| `/docs` endpoint | Test endpoints interactively without any client |
 | HTTP status codes | Check the response code to understand what went wrong |
-| `print()` / logging | Add temporary prints to trace execution |
+| `print()` / logging | Add temporary prints to trace execution through the code |
 
 ---
 
@@ -282,4 +306,4 @@ Start with an in-memory list. Replace with PostgreSQL in Part 5.
 
 ## Navigation
 
-[← Part 1: Foundations](part-1-foundations.md) | [Part 3: Frontend →](part-3-frontend-nextjs.md)
+[← Part 1: Foundations](part-1-foundations) | [Part 3: Virtualenv & Testing →](part-3-frontend-nextjs)

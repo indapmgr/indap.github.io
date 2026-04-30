@@ -23,6 +23,18 @@
       --color-done-fg:              #a371f7;
       --color-header-bg:            #161b22;
       --color-header-border:        #30363d;
+
+      /* ── Syntax-highlight palette (GitHub dark theme) ── */
+      --syn-keyword:   #ff7b72;   /* keywords: def, class, from, import, if … */
+      --syn-string:    #a5d6ff;   /* string literals */
+      --syn-comment:   #8b949e;   /* inline comments */
+      --syn-number:    #79c0ff;   /* numeric literals */
+      --syn-function:  #d2a8ff;   /* function / method names */
+      --syn-class:     #ffa657;   /* class names, type names */
+      --syn-decorator: #ffa657;   /* decorators / attributes */
+      --syn-builtin:   #79c0ff;   /* built-in names */
+      --syn-constant:  #79c0ff;   /* constants, special names */
+      --syn-tag:       #7ee787;   /* HTML/YAML tags / keys */
     }
 
     /* ── Reset & base ── */
@@ -41,8 +53,8 @@
 
     /* ── Site header / nav ── */
     .site-header {
-      background-color: var(--color-header-bg);
-      border-bottom: 1px solid var(--color-header-border);
+      background: linear-gradient(90deg, #161b22 0%, #0d1117 100%);
+      border-bottom: 1px solid rgba(88, 166, 255, 0.25);
       padding: 0 1.5rem;
       display: flex;
       align-items: center;
@@ -52,10 +64,10 @@
       z-index: 100;
     }
 
-    .site-header svg { fill: var(--color-fg-default); margin-right: 0.75rem; flex-shrink: 0; }
+    .site-header svg { fill: var(--color-accent-fg); margin-right: 0.75rem; flex-shrink: 0; }
 
     .site-header a {
-      color: var(--color-fg-default);
+      color: var(--color-accent-fg);
       text-decoration: none;
       font-size: 0.9375rem;
       font-weight: 600;
@@ -64,7 +76,7 @@
       text-overflow: ellipsis;
     }
 
-    .site-header a:hover { color: var(--color-fg-default); text-decoration: underline; }
+    .site-header a:hover { color: #79c0ff; text-decoration: underline; }
 
     /* ── Layout: sidebar + main ── */
     .site-wrapper {
@@ -88,35 +100,39 @@
 
     .sidebar-title {
       font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--color-fg-muted);
+      font-weight: 700;
+      color: var(--color-accent-fg);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.08em;
       padding: 0 0.5rem 0.5rem;
       margin-bottom: 0.25rem;
+      border-bottom: 1px solid var(--color-border-muted);
     }
 
-    .sidebar nav ul { list-style: none; }
+    .sidebar nav ul { list-style: none; margin-top: 0.5rem; }
 
     .sidebar nav ul li a {
       display: block;
-      padding: 0.3rem 0.5rem;
+      padding: 0.35rem 0.625rem;
       border-radius: 6px;
-      color: var(--color-fg-default);
+      color: var(--color-fg-muted);
       text-decoration: none;
       font-size: 0.875rem;
-      transition: background 0.12s;
+      transition: background 0.12s, color 0.12s;
+      border-left: 2px solid transparent;
     }
 
     .sidebar nav ul li a:hover {
       background-color: var(--color-canvas-subtle);
       color: var(--color-accent-fg);
+      border-left-color: var(--color-accent-fg);
     }
 
     .sidebar nav ul li a.active {
-      background-color: var(--color-canvas-subtle);
+      background-color: rgba(31, 111, 235, 0.12);
       color: var(--color-accent-fg);
       font-weight: 600;
+      border-left-color: var(--color-accent-fg);
     }
 
     /* ── Main article ── */
@@ -137,25 +153,34 @@
       line-height: 1.25;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      color: var(--color-fg-default);
     }
 
     .markdown-body h1 {
       font-size: 2rem;
       padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--color-border-default);
+      border-bottom: 2px solid var(--color-border-default);
+      color: #e6edf3;
     }
 
     .markdown-body h2 {
       font-size: 1.5rem;
       padding-bottom: 0.4rem;
       border-bottom: 1px solid var(--color-border-default);
+      color: #79c0ff;     /* blue accent for section headings */
     }
 
-    .markdown-body h3 { font-size: 1.25rem; }
-    .markdown-body h4 { font-size: 1rem; }
-    .markdown-body h5 { font-size: 0.875rem; }
-    .markdown-body h6 { font-size: 0.85rem; color: var(--color-fg-muted); }
+    .markdown-body h3 {
+      font-size: 1.25rem;
+      color: #7ee787;     /* green accent for sub-sections */
+    }
+
+    .markdown-body h4 {
+      font-size: 1rem;
+      color: #ffa657;     /* orange accent for sub-sub-sections */
+    }
+
+    .markdown-body h5 { font-size: 0.875rem; color: var(--color-fg-muted); }
+    .markdown-body h6 { font-size: 0.85rem;  color: var(--color-fg-subtle); }
 
     .markdown-body h1:first-child { margin-top: 0; }
 
@@ -166,14 +191,19 @@
     .markdown-body a {
       color: var(--color-accent-fg);
       text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.12s;
     }
 
-    .markdown-body a:hover { text-decoration: underline; }
+    .markdown-body a:hover {
+      text-decoration: none;
+      border-bottom-color: var(--color-accent-fg);
+    }
 
     /* ── Horizontal rule ── */
     .markdown-body hr {
       height: 1px;
-      background-color: var(--color-border-default);
+      background: linear-gradient(90deg, transparent, var(--color-border-default), transparent);
       border: none;
       margin: 1.75rem 0;
     }
@@ -191,24 +221,26 @@
 
     /* ── Inline code ── */
     .markdown-body code {
-      background-color: var(--color-canvas-subtle);
+      background-color: rgba(110, 118, 129, 0.12);
       border: 1px solid var(--color-border-default);
       border-radius: 6px;
       padding: 0.2em 0.4em;
       font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, "Liberation Mono", monospace;
       font-size: 0.85em;
-      color: var(--color-fg-default);
+      color: #ff7b72;     /* inline code is reddish-orange for visual distinction */
     }
 
     /* ── Fenced code blocks ── */
     .markdown-body pre {
-      background-color: var(--color-canvas-subtle);
-      border: 1px solid var(--color-border-default);
+      background-color: #161b22;
+      border: 1px solid rgba(88, 166, 255, 0.18);
+      border-top: 3px solid rgba(88, 166, 255, 0.45);
       border-radius: 8px;
       padding: 1.25rem 1.5rem;
       overflow-x: auto;
       margin-bottom: 1.25rem;
-      line-height: 1.55;
+      line-height: 1.6;
+      position: relative;
     }
 
     .markdown-body pre code {
@@ -216,18 +248,102 @@
       border: none;
       padding: 0;
       font-size: 0.875rem;
-      color: var(--color-fg-default);
+      color: #e6edf3;     /* reset to white for block code */
       white-space: pre;
     }
 
+    /* ── Rouge highlighter wrapper ── */
+    .highlight { background: transparent; }
+
+    .markdown-body div.highlight,
+    .markdown-body figure.highlight {
+      background-color: #161b22;
+      border: 1px solid rgba(88, 166, 255, 0.18);
+      border-top: 3px solid rgba(88, 166, 255, 0.45);
+      border-radius: 8px;
+      margin-bottom: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .markdown-body div.highlight pre,
+    .markdown-body figure.highlight pre {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      margin: 0;
+    }
+
+    /* ── Rouge syntax-highlight token colours ── */
+    /* Comments */
+    .highlight .c,  .highlight .c1, .highlight .cm,
+    .highlight .cs, .highlight .cp, .highlight .sd
+    { color: var(--syn-comment); font-style: italic; }
+
+    /* Keywords: def, class, import, return, if, for … */
+    .highlight .k,  .highlight .kd, .highlight .kn,
+    .highlight .kr, .highlight .kp, .highlight .kc
+    { color: var(--syn-keyword); font-weight: 500; }
+
+    /* Keyword types */
+    .highlight .kt { color: var(--syn-class); }
+
+    /* String literals */
+    .highlight .s,  .highlight .s1, .highlight .s2,
+    .highlight .sh, .highlight .sb, .highlight .sx
+    { color: var(--syn-string); }
+
+    /* String escape sequences & interpolation */
+    .highlight .se, .highlight .si { color: var(--syn-class); }
+
+    /* Regex strings */
+    .highlight .sr { color: var(--syn-string); }
+
+    /* Numeric literals */
+    .highlight .m,  .highlight .mi, .highlight .mf,
+    .highlight .mh, .highlight .mo, .highlight .il
+    { color: var(--syn-number); }
+
+    /* Function / method names */
+    .highlight .nf, .highlight .fm { color: var(--syn-function); }
+
+    /* Class names */
+    .highlight .nc { color: var(--syn-class); }
+
+    /* Decorators */
+    .highlight .nd { color: var(--syn-decorator); }
+
+    /* Built-in names */
+    .highlight .nb { color: var(--syn-builtin); }
+
+    /* Name attributes (HTML attrs, YAML keys) */
+    .highlight .na { color: var(--syn-decorator); }
+
+    /* Tag names (HTML/XML/YAML) */
+    .highlight .nt { color: var(--syn-tag); }
+
+    /* Variables */
+    .highlight .nv, .highlight .vi,
+    .highlight .vg, .highlight .vc
+    { color: var(--syn-constant); }
+
+    /* Operators */
+    .highlight .o, .highlight .ow { color: var(--syn-keyword); }
+
+    /* Errors */
+    .highlight .err { color: var(--color-danger-fg); }
+
+    /* Generic diff colours */
+    .highlight .gi { color: var(--color-success-fg); }
+    .highlight .gd { color: var(--color-danger-fg); }
+    .highlight .gh, .highlight .gu { color: var(--color-accent-fg); font-weight: 600; }
+
     /* ── Blockquotes ── */
     .markdown-body blockquote {
-      border-left: 4px solid var(--color-accent-emphasis);
-      background-color: var(--color-canvas-subtle);
+      border-left: 4px solid var(--color-accent-fg);
+      background-color: rgba(31, 111, 235, 0.08);
       margin: 0 0 1rem;
       padding: 0.75rem 1rem 0.75rem 1.25rem;
       border-radius: 0 6px 6px 0;
-      color: var(--color-fg-muted);
     }
 
     .markdown-body blockquote p { margin-bottom: 0; color: var(--color-fg-default); }
@@ -250,18 +366,15 @@
     }
 
     .markdown-body th {
-      background-color: var(--color-canvas-subtle);
+      background: linear-gradient(180deg, rgba(88,166,255,0.12) 0%, rgba(88,166,255,0.06) 100%);
       font-weight: 600;
-      color: var(--color-fg-default);
+      color: #79c0ff;
+      border-bottom: 2px solid rgba(88, 166, 255, 0.3);
     }
 
-    .markdown-body tr:nth-child(2n) {
-      background-color: var(--color-canvas-default);
-    }
-
-    .markdown-body tr:nth-child(2n+1) {
-      background-color: var(--color-canvas-subtle);
-    }
+    .markdown-body tr:nth-child(even)  { background-color: rgba(255,255,255,0.02); }
+    .markdown-body tr:nth-child(odd)   { background-color: var(--color-canvas-default); }
+    .markdown-body tr:hover            { background-color: rgba(88,166,255,0.05); }
 
     /* ── Images ── */
     .markdown-body img {
@@ -294,8 +407,8 @@
     /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 8px; height: 8px; }
     ::-webkit-scrollbar-track { background: var(--color-canvas-default); }
-    ::-webkit-scrollbar-thumb { background: var(--color-border-default); border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--color-fg-subtle); }
+    ::-webkit-scrollbar-thumb { background: rgba(88,166,255,0.25); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(88,166,255,0.5); }
   </style>
 </head>
 <body>
@@ -320,19 +433,19 @@
 
     <!-- Sidebar navigation -->
     <aside class="sidebar">
-      <div class="sidebar-title">Handbook</div>
+      <div class="sidebar-title">📚 Handbook</div>
       <nav>
         <ul>
           <li><a href="{{ site.baseurl }}/"{% if page.url == "/" or page.url == "/index.html" %} class="active"{% endif %}>🏠 Home</a></li>
-          <li><a href="{{ site.baseurl }}/part-1-foundations"{% if page.url contains "part-1" %} class="active"{% endif %}>Part 1 — Foundations</a></li>
-          <li><a href="{{ site.baseurl }}/part-2-backend-fastapi"{% if page.url contains "part-2" %} class="active"{% endif %}>Part 2 — Backend: FastAPI</a></li>
-          <li><a href="{{ site.baseurl }}/part-3-frontend-nextjs"{% if page.url contains "part-3" %} class="active"{% endif %}>Part 3 — API Client Integration</a></li>
-          <li><a href="{{ site.baseurl }}/part-4-docker"{% if page.url contains "part-4" %} class="active"{% endif %}>Part 4 — Docker</a></li>
-          <li><a href="{{ site.baseurl }}/part-5-postgresql"{% if page.url contains "part-5" %} class="active"{% endif %}>Part 5 — PostgreSQL</a></li>
-          <li><a href="{{ site.baseurl }}/part-6-debugging"{% if page.url contains "part-6" %} class="active"{% endif %}>Part 6 — Debugging</a></li>
-          <li><a href="{{ site.baseurl }}/part-7-advanced-git"{% if page.url contains "part-7" %} class="active"{% endif %}>Part 7 — Advanced Git</a></li>
-          <li><a href="{{ site.baseurl }}/part-8-full-project"{% if page.url contains "part-8" %} class="active"{% endif %}>Part 8 — Full Project</a></li>
-          <li><a href="{{ site.baseurl }}/part-9-final-evaluation"{% if page.url contains "part-9" %} class="active"{% endif %}>Part 9 — Final Evaluation</a></li>
+          <li><a href="{{ site.baseurl }}/part-1-foundations"{% if page.url contains "part-1" %} class="active"{% endif %}>🔧 Part 1 — Foundations</a></li>
+          <li><a href="{{ site.baseurl }}/part-2-backend-fastapi"{% if page.url contains "part-2" %} class="active"{% endif %}>⚡ Part 2 — Backend: FastAPI</a></li>
+          <li><a href="{{ site.baseurl }}/part-3-frontend-nextjs"{% if page.url contains "part-3" %} class="active"{% endif %}>🐍 Part 3 — Virtualenv & Testing</a></li>
+          <li><a href="{{ site.baseurl }}/part-4-docker"{% if page.url contains "part-4" %} class="active"{% endif %}>🐳 Part 4 — Docker</a></li>
+          <li><a href="{{ site.baseurl }}/part-5-postgresql"{% if page.url contains "part-5" %} class="active"{% endif %}>🗄️ Part 5 — PostgreSQL</a></li>
+          <li><a href="{{ site.baseurl }}/part-6-debugging"{% if page.url contains "part-6" %} class="active"{% endif %}>🔍 Part 6 — Debugging</a></li>
+          <li><a href="{{ site.baseurl }}/part-7-advanced-git"{% if page.url contains "part-7" %} class="active"{% endif %}>🌿 Part 7 — Advanced Git</a></li>
+          <li><a href="{{ site.baseurl }}/part-8-full-project"{% if page.url contains "part-8" %} class="active"{% endif %}>🏗️ Part 8 — Full Project</a></li>
+          <li><a href="{{ site.baseurl }}/part-9-final-evaluation"{% if page.url contains "part-9" %} class="active"{% endif %}>🎯 Part 9 — Final Evaluation</a></li>
         </ul>
       </nav>
     </aside>
