@@ -44,7 +44,7 @@ You have two great options for Python. Pick one and stick with it — do not ins
 
 **Download:** [code.visualstudio.com](https://code.visualstudio.com/)
 
-<details>
+<details markdown="1">
 <summary>🪟 Windows</summary>
 
 1. Go to [code.visualstudio.com](https://code.visualstudio.com/) and click **Download for Windows**.
@@ -59,7 +59,7 @@ You have two great options for Python. Pick one and stick with it — do not ins
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🍎 Mac</summary>
 
 1. Go to [code.visualstudio.com](https://code.visualstudio.com/) and click **Download for Mac**.
@@ -72,7 +72,7 @@ You have two great options for Python. Pick one and stick with it — do not ins
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🐧 Linux (Ubuntu/Debian)</summary>
 
 ```bash
@@ -112,7 +112,7 @@ After installing VS Code, add these extensions (they make Python development muc
 
 Download the **Community** edition — it is free and covers everything in this handbook.
 
-<details>
+<details markdown="1">
 <summary>🪟 Windows</summary>
 
 1. Download the Community installer (`.exe`).
@@ -122,7 +122,7 @@ Download the **Community** edition — it is free and covers everything in this 
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🍎 Mac</summary>
 
 1. Download the Community `.dmg`.
@@ -131,7 +131,7 @@ Download the **Community** edition — it is free and covers everything in this 
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🐧 Linux</summary>
 
 ```bash
@@ -161,7 +161,7 @@ Python is the programming language this handbook is built around.
 
 Always install **Python 3.11 or newer**. Python 2 is obsolete — do not install it.
 
-<details>
+<details markdown="1">
 <summary>🪟 Windows</summary>
 
 1. Go to [python.org/downloads](https://www.python.org/downloads/) and click the latest **Python 3.x.x** button.
@@ -191,7 +191,7 @@ Always install **Python 3.11 or newer**. Python 2 is obsolete — do not install
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🍎 Mac</summary>
 
 macOS comes with Python 2 pre-installed (old and unusable for our purposes). Install Python 3 separately.
@@ -230,7 +230,7 @@ brew install python@3.11
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🐧 Linux (Ubuntu/Debian)</summary>
 
 ```bash
@@ -258,7 +258,7 @@ Git is the tool that tracks every change you make to your code. It lets you go b
 
 **Download:** [git-scm.com](https://git-scm.com/)
 
-<details>
+<details markdown="1">
 <summary>🪟 Windows</summary>
 
 1. Download the Git for Windows installer from [git-scm.com](https://git-scm.com/).
@@ -279,7 +279,7 @@ Expected: `git version 2.x.x`
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🍎 Mac</summary>
 
 **Option A — Xcode Command Line Tools (simplest):**
@@ -304,7 +304,7 @@ git --version
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🐧 Linux (Ubuntu/Debian)</summary>
 
 ```bash
@@ -335,7 +335,7 @@ Docker lets you run software in isolated containers — same code, same environm
 
 **Download:** [docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop/)
 
-<details>
+<details markdown="1">
 <summary>🪟 Windows</summary>
 
 1. Download Docker Desktop for Windows.
@@ -360,7 +360,7 @@ docker compose version
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🍎 Mac</summary>
 
 1. Download Docker Desktop for Mac — choose **Apple Silicon** (M1/M2/M3) or **Intel** based on your Mac.
@@ -377,7 +377,7 @@ docker compose version
 
 </details>
 
-<details>
+<details markdown="1">
 <summary>🐧 Linux (Ubuntu)</summary>
 
 ```bash
