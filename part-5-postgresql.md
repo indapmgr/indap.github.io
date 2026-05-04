@@ -438,7 +438,7 @@ Output: `DELETE 1` — one row removed.
 4. Verify data persists: stop and restart the containers, confirm users are still there.
 5. Complete section 11 above, then connect pgAdmin to your Docker PostgreSQL instance and view the data in the GUI.
 
-> **📌 Push to GitHub when done.** See [Part 1 — section 1.11](part-1-development-environment#section-1-11-push-demo-project) for the push guide.
+> **📌 Push to GitHub when done.** See [Part 1 — section 1.11](part-1-development-environment#111-initialize-your-demo-project-and-push-to-github) for the push guide.
 
 ---
 

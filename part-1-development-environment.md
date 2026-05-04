@@ -739,8 +739,6 @@ Hello, world!
 
 ---
 
-<a id="section-1-11-push-demo-project"></a>
-
 ### 1.11 Initialize Your Demo Project and Push to GitHub
 
 Now that your IDE is set up, your venv is active, and you have a working `hello.py`, it's time to put your project under version control and push it to GitHub. This is what you will do **every time** you start a new project or mini exercise.
@@ -838,7 +836,7 @@ Go through each item below. Do not move to Part 2 until every box is ticked.
 - [ ] **VS Code** (or PyCharm) is installed and opens without errors
 - [ ] VS Code Python extension is installed (or PyCharm is detecting Python automatically)
 - [ ] `python --version` (or `python3 --version`) shows `3.11.x` or newer in a terminal
-- [ ] `pip --version` (Windows) or `pip3 --version` (Mac/Linux) shows a version number
+- [ ] `pip --version` (Windows) or `pip3 --version` (Mac / Linux) shows a version number
 - [ ] `git --version` shows `2.x.x` or newer
 - [ ] `git config --global user.name` and `user.email` are set
 - [ ] GitHub account created and verified at [github.com](https://github.com/)

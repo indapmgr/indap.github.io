@@ -287,7 +287,7 @@ Build an in-memory user API:
 
 Start with an in-memory list. Replace with PostgreSQL in Part 5.
 
-> **📌 Push to GitHub when done:** Every mini project must be pushed to your GitHub account. The team demos and reviews work from GitHub — if it's not there, it hasn't been submitted. See [Part 1 — section 1.11](part-1-development-environment#section-1-11-push-demo-project) for how to push a project.
+> **📌 Push to GitHub when done:** Every mini project must be pushed to your GitHub account. The team demos and reviews work from GitHub — if it's not there, it hasn't been submitted. See [Part 1 — section 1.11](part-1-development-environment#111-initialize-your-demo-project-and-push-to-github) for how to push a project.
 
 ---
 
