@@ -435,7 +435,7 @@ DB_PASS = os.getenv("DB_PASSWORD", "password")
 7. Connect to the running PostgreSQL container using psql or pgAdmin.
 8. Create the `users` table and insert at least two rows via CRUD operations.
 
-> **📌 Push to GitHub when done.** See [Part 1 — section 1.11](part-1-development-environment#111-initialize-your-demo-project-and-push-to-github) for the push guide.
+> **📌 Push to GitHub when done.** See [Part 1 — section 1.11](part-1-development-environment#section-1-11-push-demo-project) for the push guide.
 
 ---
 

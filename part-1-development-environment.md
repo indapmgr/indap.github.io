@@ -739,6 +739,8 @@ Hello, world!
 
 ---
 
+<a id="section-1-11-push-demo-project"></a>
+
 ### 1.11 Initialize Your Demo Project and Push to GitHub
 
 Now that your IDE is set up, your venv is active, and you have a working `hello.py`, it's time to put your project under version control and push it to GitHub. This is what you will do **every time** you start a new project or mini exercise.

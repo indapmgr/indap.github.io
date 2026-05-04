@@ -320,7 +320,7 @@ Write a short reflection (a few sentences is fine):
 4. Run the tests and fix any failures.
 5. Push the project to a new GitHub repository named `fastapi-mini-project`.
 
-> **📌 Remember:** Push to GitHub when done. See [Part 1 — section 1.11](part-1-development-environment#111-initialize-your-demo-project-and-push-to-github) for the full push guide.
+> **📌 Remember:** Push to GitHub when done. See [Part 1 — section 1.11](part-1-development-environment#section-1-11-push-demo-project) for the full push guide.
 
 ---
 
